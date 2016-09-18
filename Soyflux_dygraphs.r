@@ -1,6 +1,5 @@
 library(xts)
 library(dygraphs)
-library(R2HTML)
 library(plotly)
 library(openair)
 
@@ -50,6 +49,7 @@ end   <- as.Date(tail(Station$timestamp, 1), format = "%Y-%m-%d")
 
 Station.daily <- timeAverage(Station, avg.time = "day", statistic = "mean")
 Precip <- data.frame(Station.daily$date, Station.daily$Precip*48)
+colnames(Precip) <- c("Station.daily.date", "Station.daily.Precip")
 
 # Organize battery voltage data - not shared online
 T1 <- data.frame(Station$timestamp, Station$BattV)
@@ -61,7 +61,7 @@ indexTZ(T1) <- "GMT"   # all CR1000 measurements are GMT
 
 # Organize precipitation data - to be shared online
 T2 <- data.frame(tail(Station.daily$date, 30), 
-                 signif(tail(Station.daily$Precip, 30), digits = 2),
+                 signif(tail(Precip$Station.daily.Precip, 30), digits = 2),
                  signif(tail(Station.daily$RH, 30), digits = 2))
 colnames(T2) <- c("date", "P", "UR")
 rownames(T2) <- T2[,1] 
