@@ -1,6 +1,5 @@
 library(xts)
 library(dygraphs)
-library(R2HTML)
 library(plotly)
 library(openair)
 
