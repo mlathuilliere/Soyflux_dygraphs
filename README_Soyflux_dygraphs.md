@@ -2,7 +2,7 @@
 
 This R code creates dygraphs (http://dygraphs.com/) from field data collected from a CR1000 data logger
 
-The code specifically alls the .dat file downloaded from Loggernet onto the local computer, creates
+The code specifically adds the .dat file downloaded from Loggernet onto the local computer, creates
 dygraphs as html files to be posted on a public folder
 
 The following code uses R packages "xts", "dygraphs", "plotly" and "openair"
